@@ -1,11 +1,12 @@
-import './App.css';
-import {newPhotosPopup} from './newPhotosPopup.js'
+import "./App.css";
+import  AppView  from "./newPhotosPopup.js";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <newPhotosPopup/> 
+        <AppView />
+        <p> Testing </p>
       </header>
     </div>
   );
