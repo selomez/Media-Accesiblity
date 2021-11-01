@@ -23,9 +23,11 @@ function App() {
 
       <header className="App-header">
       <Image 
-        source = {require("mountain.jpeg")}
-        alt = "Hello World"
-        onPress = {message} 
+        source = {{
+          uri: 'https://reactnative.dev/img/tiny_logo.png',
+        }}
+        //alt = "Hello World"
+        //onPress = {message} 
       />
       
         <ImageTextInputMultiline />
