@@ -17,7 +17,7 @@ function App() {
       <header className="App-header">
         
         <ImageTextInputMultiline />
-        <Container>
+        <Container className="mt-3">
           <Row>
             <Col>
               <Button variant='danger'> Cancel </Button>
