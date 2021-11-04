@@ -24,7 +24,7 @@ function App() {
 
       <header className="App-header">
 
-        <DisplayAnImage/>
+        <DisplayAnImage src='./mountain.jpeg'/>
         <ImageTextInputMultiline />
         <Container className="mt-3">
           <Row>

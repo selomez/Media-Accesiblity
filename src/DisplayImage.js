@@ -11,16 +11,16 @@ import { View, Image, StyleSheet} from 'react-native';
         }
     });
 
-    const DisplayAnImage = () => {
-        return (
+    
+    // imageToDisplay is an Image type.
+    export const DisplayAnImage = (imageToDisplay) => {         
+      return (
           <View style={styles.container}>
             <Image
               style={styles.imageSize}
-              source={require('./mountain.jpeg')}
+              source={require(imageToDisplay.src)}
               alt = {"A stock image of Mount Everest."}
             />
           </View>
         );
       }
-      
-export default DisplayAnImage;
