@@ -33,4 +33,4 @@ const promptPopup = () => {
   );
 }
 
-export default App;
+export default promptPopup;

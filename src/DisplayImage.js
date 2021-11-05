@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import { View, Image, StyleSheet} from 'react-native';
 
     const styles = StyleSheet.create({
@@ -18,9 +19,13 @@ import { View, Image, StyleSheet} from 'react-native';
           <View style={styles.container}>
             <Image
               style={styles.imageSize}
-              source={require(imageToDisplay.src)}
+              source={require(`${imageToDisplay.src}`)}
+              //source={require('./mountain.jpeg')}
               alt = {"A stock image of Mount Everest."}
             />
+            
           </View>
         );
       }
+
+export default DisplayAnImage;

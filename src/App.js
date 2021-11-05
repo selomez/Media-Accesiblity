@@ -1,5 +1,5 @@
 import "./App.css";
-import  {AppView}  from "./newPhotosPopup.js";
+import  {AppView}  from "./promptPopup.js";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -20,8 +20,6 @@ function App() {
   return (
     
     <div className="App">
-     
-
       <header className="App-header">
 
         <DisplayAnImage src='./mountain.jpeg'/>
@@ -40,6 +38,7 @@ function App() {
         
         
       </header>
+      
     </div>
   );
 }
