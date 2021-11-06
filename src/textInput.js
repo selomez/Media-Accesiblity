@@ -6,13 +6,14 @@ export const ImageTextInput = (props) => {
     <TextInput
       {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
       editable
+      clearTextOnFocus = {true}
       maxLength={125}
     />
   );
 }
 
 export const ImageTextInputMultiline = () => {
-  const [value, onChangeText] = React.useState('Image Description: Tell us about the image...');
+  const [value, onChangeText] = React.useState(null);
 
   // If you type something in the text box that is a color, the background will change to that
   // color.
@@ -27,6 +28,7 @@ export const ImageTextInputMultiline = () => {
         multiline
         numberOfLines={4}
         onChangeText={text => onChangeText(text)}
+        placeholder="Image Description: Tell us about the image..."
         value={value}
         style={{padding: 10}}
       />

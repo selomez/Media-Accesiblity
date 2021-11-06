@@ -19,6 +19,7 @@ const popUp = () => {
         { 
           text: "Enter Alternative Text",
           onPress: text => console.log(text)
+          
         }
       ],
       "text entered"
