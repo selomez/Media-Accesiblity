@@ -1,13 +1,12 @@
 import "./App.css";
-import  {AppView}  from "./newPhotosPopup.js";
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import {Image} from 'react-native'
-import {ImageTextInput,ImageTextInputMultiline} from "./textInput";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import {ImageTextInputMultiline} from "./textInput";
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import {noCaptionPopUp} from 'photoNoCaption.js';
+import DisplayAnImage from './DisplayImage.js';
 
 
 function App() {
@@ -19,17 +18,9 @@ function App() {
   return (
     
     <div className="App">
-     
-
       <header className="App-header">
-      <Image 
-        source = {{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}
-        //alt = "Hello World"
-        //onPress = {message} 
-      />
-      
+
+        <DisplayAnImage src='./mountain.jpeg'/>
         <ImageTextInputMultiline />
         <Container className="mt-3">
           <Row>
@@ -45,6 +36,7 @@ function App() {
         
         
       </header>
+      
     </div>
   );
 }
