@@ -1,42 +1,18 @@
 import "./App.css";
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import {ImageTextInputMultiline} from "./textInput";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import DisplayAnImage from './DisplayImage.js';
-
+import React from "react";
+import { ImageTextInputMultiline } from "./textInput";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
   const message = () => {
-    console.log("clicked!") 
-   }
-  
+    console.log("clicked!");
+  };
+
   return (
-    
     <div className="App">
       <header className="App-header">
-
-        <DisplayAnImage src='./mountain.jpeg'/>
         <ImageTextInputMultiline />
-        <Container className="mt-3">
-          <Row>
-            <Col>
-              <Button variant='danger'> Cancel </Button>
-            </Col>
-            <Col>
-              <Button variant='primary'> Submit </Button>
-            </Col>
-          </Row>
-          
-        </Container>
-        
-        
       </header>
-      
     </div>
   );
 }
