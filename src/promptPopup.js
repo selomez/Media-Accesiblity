@@ -15,18 +15,18 @@ const promptPopup = () => {
   const popUp = () =>
     Alert.alert(
       promptStrings.APPNAME,
-      promptStrings.LATER, //Create a statement where 'if *condition*, use promptStrings.condition, not sure how to do that
+      promptStrings.LATERFLOW1, //Create a statement where 'if *condition*, use promptStrings.condition, not sure how to do that
       [
         {
           text: promptStrings.OKAY,
           onPress: () =>
-            console.log("Dictate pressed") /*Should go to textInputPopUp.js*/,
+            console.log("Okay pressed") /*Should go to textInputPopUp.js*/,
         },
         {
-          text: promptStrings.LATER,
+          text: promptStrings.CANCEL,
           onPress: () =>
             console.log(
-              "Later Pressed"
+              "Cancel Pressed"
             ) /*should go to promptPopup(LATERFLOW1)*/,
         },
       ]

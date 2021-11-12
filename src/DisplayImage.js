@@ -19,8 +19,7 @@ export const DisplayAnImage = (imageToDisplay) => {
       <Image
         style={styles.imageSize}
         source={require(`${imageToDisplay.src}`)}
-        //source={require('./mountain.jpeg')}
-        alt={"A stock image of Mount Everest."}
+        accessibilityLabel = "A stock image of Mount Everest."
       />
     </View>
   );
