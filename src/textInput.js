@@ -23,12 +23,6 @@ export const saveCaption = (caption, image) => {
   <Image source={image} alt={caption} accessibilityLabel={caption} />;
   return image;
 };
-//function saveCaption2(props) {
-//<Image source = props.image
-//alt = props.caption
-//accessibilityLabel = props.caption
-// />
-//}
 
 export const ImageTextInputMultiline = () => {
   const [value, onChangeText] = React.useState(null);
@@ -61,7 +55,7 @@ export const ImageTextInputMultiline = () => {
           <Col>
             <Button
               variant="danger"
-              onClick={() =>  promptPopup()}
+              onClick={promptPopup}
               accessibilityLabel="Cancel Captioning"
             >
               Cancel
@@ -71,7 +65,7 @@ export const ImageTextInputMultiline = () => {
             <form>
               <Button
                 variant="primary"
-                onClick={saveCaption(
+                onClick={() => saveCaption(
                   ImageTextInput.onChangeText,
                   "./mountain.jpeg"
                 )}
@@ -79,15 +73,6 @@ export const ImageTextInputMultiline = () => {
               >
                 Submit
               </Button>
-              {/*Testing for using a function in stead of a const
-              <Button
-                variant="primary"
-                onClick= 
-                <saveCaption2 
-                  image = "./mountain.jpeg"
-                  caption = "test"
-                />
-              </Button>*/}
             </form>
           </Col>
         </Row>

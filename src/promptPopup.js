@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
 
 //Using a template prompt like this eliminates the need for laterPopUp.js, newPhotosPopup.js, photoNoCaption.js, and uncaptionedPopup.js
 const promptPopup = () => {
+  console.log("reached popup");
+  console.log(promptStrings.LATERFLOW1);
   const popUp = () =>
     Alert.alert(
       promptStrings.APPNAME,
@@ -33,7 +35,7 @@ const promptPopup = () => {
     );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container}>  
       <popUp />
     </View>
   );
