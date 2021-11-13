@@ -13,7 +13,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ImageTextInputMultiline/>
-        {<DisplayAnImage src="./mountain.jpeg" />}
       </header>
     </div>
   );
