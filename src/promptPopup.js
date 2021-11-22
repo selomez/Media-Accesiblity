@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Button, Alert } from "react-native";
-import promptStrings from "./Strings.js";
+import promptStrings from "src/Strings.js";
 
 const styles = StyleSheet.create({
   container: {
