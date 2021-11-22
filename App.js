@@ -9,9 +9,19 @@ function App() {
     console.log("clicked!");
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      paddingTop: 50,
+    },
+    imageSize: {
+      width: 100,
+      height: 100,
+    },
+  });
   return (
-      <View> 
+      <View  style={styles.container}> 
       <Image
+        style={styles.imageSize}
         source={require(`${"./src/mountain.jpeg"}`)}
         accessibilityLabel = "A stock image of Mount Everest."
       />
@@ -20,9 +30,3 @@ function App() {
 }
 
 export default App;
-
-
-/*  
-<ImageTextInputMultiline/>
-{<DisplayAnImage src="./mountain.jpeg" />} 
-*/
