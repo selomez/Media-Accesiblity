@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import { View, Image, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -13,13 +12,13 @@ const styles = StyleSheet.create({
 });
 
 // imageToDisplay is an Image type.
-export const DisplayAnImage = (imageToDisplay) => {
+export const DisplayAnImage = (props) => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.imageSize}
-        source={require(`${imageToDisplay.src}`)}
-        accessibilityLabel = "A stock image of Mount Everest."
+        source={require(`${props.src}`)}
+        accessibilityLabel={props.caption}
       />
     </View>
   );

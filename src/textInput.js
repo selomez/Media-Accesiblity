@@ -1,11 +1,11 @@
 import React from "react";
 import { View, TextInput, Alert, BackHandler, Image } from "react-native";
-import DisplayAnImage from "src/DisplayImage.js";
+import DisplayAnImage from "./DisplayImage.js";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import promptPopup from 'src/promptPopup'
+import promptPopup from "./promptPopup";
 
 export const ImageTextInput = (props) => {
   return (
@@ -67,9 +67,9 @@ export const ImageTextInputMultiline = () => {
               <Button
                 variant="primary"
                 onClick={() => console.log(onChangeText)} //,saveCaption(
-           //</form>       onChangeText,
-            //</Col>      "./mountain.jpeg"
-               // )}
+                //</form>       onChangeText,
+                //</Col>      "./mountain.jpeg"
+                // )}
                 accessibilityLabel="Submit Text"
               >
                 Submit

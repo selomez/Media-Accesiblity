@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Button, Alert } from "react-native";
-import promptStrings from "src/Strings.js";
+import promptStrings from "./Strings.js";
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +35,7 @@ const promptPopup = () => {
     );
 
   return (
-    <View style={styles.container}>  
+    <View style={styles.container}>
       <popUp />
     </View>
   );
