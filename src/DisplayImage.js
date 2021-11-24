@@ -16,9 +16,9 @@ export const DisplayAnImage = (props) => {
   return (
     <View style={styles.container}>
       <Image
+        ref={props.imageRef}
         style={styles.imageSize}
         source={require(`${props.src}`)}
-        accessibilityLabel={props.caption}
       />
     </View>
   );

@@ -1,26 +1,39 @@
 import React, { Component } from "react";
-import { View, TextInput, Alert, BackHandler, Image } from "react-native";
-import DisplayAnImage from "./DisplayImage.js";
+import {
+  Text,
+  View,
+  TextInput,
+  Alert,
+  BackHandler,
+  Image,
+  StyleSheet,
+} from "react-native";
+//import DisplayAnImage from "./DisplayImage.js";
 import promptPopup from "./promptPopup.js";
-import { Button } from "react-native-elements";
+import { Button, ButtonGroup } from "react-native-elements";
 
 class AddCaption extends Component {
   constructor(props) {
     super(props);
 
+    this.imageRef = React.createRef();
     this.state = {
       imgSrc: "./mountain.jpeg",
       photoQueue: null,
-      caption: "Image Description: Tell us about the image...",
+      defaultCaption: "Image Description: Tell us about the image...",
+      caption: null,
+      number: 0,
     };
 
     this.changePhoto = this.changePhoto.bind(this);
-    this.submitCaption = this.submitCaption.bind(this);
     this.nextPhoto = this.nextPhoto.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   ComponentDidMount() {
     this.setState({
+      caption: this.state.defaultCaption,
       //photoQueue = CameraRoll.getPhotos()
     });
   }
@@ -32,62 +45,107 @@ class AddCaption extends Component {
     //caption = "Image Description: Tell us about the image..."
     //else:
     //caption = imgSrc get Alt text
-  };
-  submitCaption = (props) => {
-    caption = props.newCaption;
-    //save in the imgSrc alt text
 
-    //nextPhoto;
+    //placeholder
+    this.setState({ imgSrc: "./kitty.jpeg" });
+    this.setState({ caption: this.state.defaultCaption });
   };
+
+  handleChange(event) {
+    this.setState({ caption: event.target.caption });
+  }
+
+  handleSubmit(event) {
+    //1) save caption in alt text
+    console.log(this.state.caption);
+    if (this.state.imgSrc != "./kitty.jpeg") {
+      this.imageRef.current.accessibilityLabel = "Mountain";
+    } else {
+      this.imageRef.current.accessibilityLabel = "Kitty";
+    }
+    console.log(this.imageRef.current.accessibilityLabel);
+    //2) change to default caption, change photo
+    this.setState({ number: this.state.number + 1 }); //replace
+    this.setState({ caption: this.state.defaultCaption });
+    this.setState({ imgSrc: "./kitty.jpeg" }); //replace eventually
+    console.log(this.imageRef.current.accessibilityLabel);
+  }
 
   changePhoto() {
     this.setState({ imgSrc: "./kitty.jpeg" });
+    this.setState({ caption: this.state.defaultCaption });
   }
 
   render() {
-    return (
-      <header className="pageLabel">
-        Media Acessibility
-        <div>
-          <DisplayAnImage
-            alignSelf="center"
-            src={this.state.imgSrc}
-            caption={this.state.caption}
-          ></DisplayAnImage>
-          <TextInput
-            placeholder={this.state.caption}
-            multiline
-            numberOfLines={4}
-          />
-          <Button
-            className="Cancel"
-            title="Cancel"
-            buttonStyle={{
-              backgroundColor: "red",
-              width: 200,
-            }}
-          ></Button>
-          <Button
-            className="Skip"
-            title="Next Photo"
-            buttonStyle={{
-              width: 200,
-            }}
-          ></Button>
+    const buttons = ["Prev", "Next"];
 
-          <Button
-            className="Submit"
-            title="Submit"
-            //disabled="true"
-            onPress={this.changePhoto}
-            buttonStyle={{
-              backgroundColor: "green",
-              width: 200,
-            }}
-          ></Button>
-        </div>
-      </header>
+    const myImages = {
+      0: require("./kitty.jpeg"),
+      1: require("./mountain.jpeg"),
+    };
+    return (
+      <View style={styles.container}>
+        <Image
+          ref={this.imageRef}
+          source={myImages[this.state.number]}
+          style={{
+            height: 100,
+            width: 100,
+          }}
+        />
+
+        <ButtonGroup
+          buttons={buttons}
+          containerStyle={{ width: 100, height: 20 }}
+          buttonContainerStyle={{ backgroundColor: "#D3D3D3" }}
+        />
+
+        <TextInput
+          placeholder={this.state.defaultCaption}
+          onChange={this.handleChange}
+          multiline
+          numberOfLines={4}
+          clearTextOnFocus={true}
+        />
+
+        <Button
+          className="Cancel"
+          title="Cancel"
+          buttonStyle={{
+            backgroundColor: "red",
+            width: 200,
+          }}
+        ></Button>
+        <Button
+          className="Skip"
+          title="Next Photo"
+          buttonStyle={{
+            width: 200,
+          }}
+        ></Button>
+
+        <Button
+          className="Submit"
+          title="Submit"
+          //disabled="true"
+          onPress={this.handleSubmit}
+          buttonStyle={{
+            backgroundColor: "green",
+            width: 200,
+          }}
+        ></Button>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    //display: "flex",
+    //flexDirection: "column",
+    //flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 export default AddCaption;
