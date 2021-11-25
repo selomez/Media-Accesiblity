@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   Text,
   View,
@@ -21,7 +21,7 @@ class AddCaption extends Component {
       imgSrc: "./mountain.jpeg",
       photoQueue: null,
       defaultCaption: "Image Description: Tell us about the image...",
-      caption: null,
+      caption: "Image Description: Tell us about the image...",
       number: 0,
     };
 
@@ -30,7 +30,7 @@ class AddCaption extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  //this isnt working
   ComponentDidMount() {
     this.setState({
       caption: this.state.defaultCaption,
@@ -52,19 +52,14 @@ class AddCaption extends Component {
   };
 
   handleChange(event) {
-    this.setState({ caption: event.target.caption });
+    console.log(this.state.caption);
+    this.setState({ caption: event.target.value });
   }
 
   handleSubmit(event) {
     //1) save caption in alt text
-    console.log(this.state.caption);
-    if (this.state.imgSrc != "./kitty.jpeg") {
-      this.imageRef.current.accessibilityLabel = "Mountain";
-    } else {
-      this.imageRef.current.accessibilityLabel = "Kitty";
-    }
-    console.log(this.imageRef.current.accessibilityLabel);
-    //2) change to default caption, change photo
+    this.imageRef.current.accessibilityLabel = this.state.caption;
+    //2) change back to default caption, change photo
     this.setState({ number: this.state.number + 1 }); //replace
     this.setState({ caption: this.state.defaultCaption });
     this.setState({ imgSrc: "./kitty.jpeg" }); //replace eventually
@@ -83,6 +78,7 @@ class AddCaption extends Component {
       0: require("./kitty.jpeg"),
       1: require("./mountain.jpeg"),
     };
+
     return (
       <View style={styles.container}>
         <Image
@@ -101,9 +97,9 @@ class AddCaption extends Component {
         />
 
         <TextInput
-          placeholder={this.state.defaultCaption}
           onChange={this.handleChange}
           multiline
+          value={this.state.caption}
           numberOfLines={4}
           clearTextOnFocus={true}
         />
