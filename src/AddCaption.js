@@ -6,11 +6,12 @@ import {
   Alert,
   BackHandler,
   Image,
-  StyleSheet,
+  StyleSheet, Platform
 } from "react-native";
 //import DisplayAnImage from "./DisplayImage.js";
 import promptPopup from "./promptPopup.js";
 import { Button, ButtonGroup } from "react-native-elements";
+import * as ImagePicker from 'expo-image-picker';
 
 class AddCaption extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class AddCaption extends Component {
     this.changePhoto = this.changePhoto.bind(this);
     this.nextPhoto = this.nextPhoto.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   //this isnt working
@@ -54,6 +56,24 @@ class AddCaption extends Component {
   handleChange(event) {
     console.log(this.state.caption);
     this.setState({ caption: event.target.value });
+  }
+  handleCancel(event) {
+    console.log("reached inside handleCancel");
+    const pickImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      console.log(result);
+  
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    };
+  
   }
 
   handleSubmit(event) {
@@ -107,6 +127,7 @@ class AddCaption extends Component {
         <Button
           className="Cancel"
           title="Cancel"
+          onPress = {this.handleCancel}
           buttonStyle={{
             backgroundColor: "red",
             width: 200,
