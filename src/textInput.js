@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import promptPopup from "./promptPopup";
 
+
 export const ImageTextInput = (props) => {
   return (
     <TextInput
@@ -22,10 +23,11 @@ export const ImageTextInput = (props) => {
 export const saveCaption = (caption, image) => {
   console.log("caption is: ", caption);
   <Image source={image} alt={caption} accessibilityLabel={caption} />;
+  MediaLibrary.saveToLibraryAsync(image);
   //return image;
 };
-
-export const ImageTextInputMultiline = () => {
+//image should be a uri like "./mountain.jpeg"
+export const ImageTextInputMultiline = (image) => {
   const [value, onChangeText] = React.useState(null);
 
   // If you type something in the text box that is a color, the background will change to that
@@ -38,7 +40,7 @@ export const ImageTextInputMultiline = () => {
         borderBottomWidth: 1,
       }}
     >
-      <DisplayAnImage src="./mountain.jpeg" />
+      <DisplayAnImage src={image}/>
 
       <Container className="mt-3">
         <Row>
@@ -66,7 +68,7 @@ export const ImageTextInputMultiline = () => {
             <form>
               <Button
                 variant="primary"
-                onClick={() => console.log(onChangeText)} //,saveCaption(
+                onClick={() => console.log(onChangeText),saveCaption(onChangeText, image)}
                 //</form>       onChangeText,
                 //</Col>      "./mountain.jpeg"
                 // )}

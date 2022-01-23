@@ -31,6 +31,7 @@ function App() {
   }, []);
 
   const pickImage = async () => {
+    console.log('using pick image')
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -46,9 +47,10 @@ function App() {
   };
   return (
     <View style={styles.container}>
-        <AddCaption/>   
+        <AddCaption/> 
         <Button title="Pick an image from camera roll" onPress={pickImage} />
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+          
     </View>
     
   );
